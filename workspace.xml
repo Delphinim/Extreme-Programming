@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="28e90f4d-9236-470a-bccb-1477ef12656a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../打印+生成/print/src/main/resources/static/min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../打印+生成/print/src/main/resources/static/min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data-center/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../data-center/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/maincloud.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/nacos_config.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/lib/bamboocloud_Codec-0.0.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/SysApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/ConfigProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/JsonDateDeserializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/KaptchaConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/LoadCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/MyDateFormat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/MybatisPlusConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/SwaggerConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/UserPwdKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/config/WebMvcConfigure.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/DoublefactorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/LogController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysDataDictionaryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysDeptController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysFileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysMenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysPersonnelManagementController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysRoleAndPowerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysRoleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysSubSystemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/SysUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/controller/UserLoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/PersonnelOnlineHoursDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysDataDictionaryDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysDeptDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysMenuDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysNoticeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonCertificateDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonWorkTypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonnelAndAccessoryDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonnelManagementDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonnelManagementExperienceDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonnelStudyResumeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonnelTrainingDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysPersonnelWorkResumeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysRoleAndPowerDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysRoleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysSubSystemDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysUserAndRoleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/SysUserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/UserAccessRecordsDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/tmp/Tmp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/tmp/TmpDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/dao/tmp/a.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/PersonnelOnlineHours.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysNotice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysPersonnelAndAccessory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysPersonnelManagementExperience.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysPersonnelStudyResume.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysPersonnelTraining.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysPersonnelWorkResume.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysSiteEqpt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysSubSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysTrainPlan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/SysWeather.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/TestAf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/TestUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/UserAccessRecords.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/param/PersonnelOnlineHoursPageParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/param/SysNoticePageParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/param/SysPersonnelManagementPageParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/param/SysPersonnelManagementUpdateStatusParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/param/SysUserLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/param/UpdateStatusParams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/result/LoginResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/result/PersonOnDutyInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/result/PostAttendanceInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/result/SysNoticeResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/result/SysPersonnelAndAccessoryResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/entity/result/ToDoResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/ISysFileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/PersonnelOnlineHoursService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysDataDictionaryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysDeptService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysEquipmentInfoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysMenuService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonCertificateService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonWorkTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonnelAndAccessoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonnelManagementExperienceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonnelManagementService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonnelStudyResumeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonnelTrainingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysPersonnelWorkResumeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysRoleAndPowerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysSubSystemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysUserAndRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/SysWeatherService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/TestUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/MinioSysFileServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/PersonnelOnlineHoursServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysDataDictionaryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysDeptServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysMenuServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonCertificateServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonWorkTypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonnelAndAccessoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonnelManagementExperienceServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonnelManagementServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonnelStudyResumeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonnelTrainingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysPersonnelWorkResumeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysRoleAndPowerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysRoleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysSubSystemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysUserAndRoleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/service/impl/SysUserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/ApiGatewayUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/BamboocloudUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/BimRemoteConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/EncryptTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/ExportWordUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/HttpApiClientSap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/HttpClientHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/MinioConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/MinioUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/PropertiesUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/ViewContentType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/ZHToPinyinUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/file/FileTypeUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/file/FileUploadUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/file/MimeTypeUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/java/com/system/utils/file/Seq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/banner.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/bootstrap-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/bootstrap-local.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/bootstrap-prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/bootstrap-test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/bootstrap.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/lib/bamboocloud_Codec-0.0.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/PersonnelOnlineHoursDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/SysSubSystemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/TestUserDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysDataDictionaryDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysDeptDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysMenuDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonCertificateDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonWorkTypeDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonnelAndAccessoryDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonnelManagementDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonnelManagementExperienceDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonnelStudyResumeDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonnelTrainingDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysPersonnelWorkResumeDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysRoleAndPowerDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysRoleDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysUserAndRoleDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/mapper/system/SysUserDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/template/个人简历.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/template/人员管理导出.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/main/resources/template/用户导出模版.xls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sys-center/src/test/java/com/system/TmpTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\Users\Ting\.m2" />
+        <option name="mavenHome" value="$USER_HOME$/JavaPro1/maven/apache-maven-3.8.7" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="C:\Users\Ting\JavaPro1\maven\apache-maven-3.8.7\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2pF5m7fwS4rOWiUlU8zbfqfOCs0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="phone-book" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="phone-book" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhoneBookApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="phone-book" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.phonebook.PhoneBookApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="lua.app" factoryName="Lua Application">
+      <option name="program" value="null" />
+      <option name="file" value="" />
+      <option name="workingDir" value="$PROJECT_DIR$/src/main/java" />
+      <option name="debuggerType" value="1" />
+      <option name="params" value="" />
+      <option name="charset" value="UTF-8" />
+      <option name="showConsole" value="true" />
+      <option name="remappingSrcs" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="28e90f4d-9236-470a-bccb-1477ef12656a" name="Changes" comment="" />
+      <created>1732349142218</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732349142218</updated>
+      <workItem from="1732349145172" duration="6463000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
