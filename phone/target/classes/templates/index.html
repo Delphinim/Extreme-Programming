@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>通讯录管理系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <style>
+        .favorite-star {
+            cursor: pointer;
+            color: #ddd;
+            transition: all 0.3s ease;
+        }
+        .favorite-star:hover {
+            transform: scale(1.2);
+        }
+        .favorite-star.active {
+            color: #ffc107;
+        }
+        .phone-badge {
+            font-size: 0.8rem;
+            margin-right: 5px;
+            white-space: nowrap;
+        }
+        .social-icon {
+            font-size: 1.2rem;
+            margin-right: 4px;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(0,0,0,.02);
+        }
+        .action-buttons button {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .action-buttons button:hover {
+            opacity: 1;
+        }
+        td .fa-weixin {
+            color: #07C160;
+        }
+        td .fa-qq {
+            color: #12B7F5;
+        }
+        td .fa-weibo {
+            color: #E6162D;
+        }
+        td small {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        /* 添加表格列宽控制 */
+        .table th,
+        .table td {
+            white-space: nowrap;  /* 防止内容换行 */
+            max-width: 200px;     /* 最大宽度 */
+            overflow: hidden;     /* 超出部分隐藏 */
+            text-overflow: ellipsis; /* 显示省略号 */
+        }
+        
+        /* 社交账号列的特殊处理 */
+        .social-accounts {
+            display: flex;
+            flex-wrap: nowrap;
+            max-width: 200px;
+            overflow: hidden;
+        }
+        
+        .social-account-item {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        
+        .social-account-item small {
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* 设置各列的宽度 */
+        .table th:nth-child(1),
+        .table td:nth-child(1) {
+            width: 40px;
+            min-width: 40px;
+        }
+        
+        .table th:nth-child(2),
+        .table td:nth-child(2) {
+            width: 50px;
+            min-width: 50px;
+        }
+        
+        .table th:nth-child(3),
+        .table td:nth-child(3) {
+            width: 150px;
+            min-width: 150px;
+        }
+        
+        .table th:nth-child(4),
+        .table td:nth-child(4) {
+            width: 200px;
+            min-width: 200px;
+        }
+        
+        .table th:nth-child(5),
+        .table td:nth-child(5) {
+            width: 150px;
+            min-width: 150px;
+        }
+        
+        .table th:nth-child(6),
+        .table td:nth-child(6) {
+            width: 150px;
+            min-width: 150px;
+        }
+        
+        .table th:nth-child(7),
+        .table td:nth-child(7) {
+            width: 200px;
+            min-width: 200px;
+        }
+        
+        .table th:nth-child(8),
+        .table td:nth-child(8) {
+            width: 150px;
+            min-width: 150px;
+        }
+        
+        .table th:nth-child(9),
+        .table td:nth-child(9) {
+            width: 120px;
+            min-width: 120px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid mt-4">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="input-group me-3" style="width: 300px;">
+                            <input type="text" class="form-control" id="searchInput" placeholder="搜索姓名或电话号码...">
+                            <button class="btn btn-outline-secondary" type="button" onclick="searchContacts()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-danger me-2" onclick="batchDelete()" id="batchDeleteBtn" style="display: none;">
+                            <i class="fas fa-trash me-2"></i>批量删除
+                        </button>
+                        <button class="btn btn-success me-2" onclick="exportContacts()">
+                            <i class="fas fa-file-export me-2"></i>导出
+                        </button>
+                        <button class="btn btn-info me-2" onclick="importContacts()">
+                            <i class="fas fa-file-import me-2"></i>导入
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addContactModal">
+                            <i class="fas fa-plus me-2"></i>添加联系人
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover" id="contactTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px">
+                                    <input type="checkbox" class="form-check-input" id="selectAll" onclick="toggleSelectAll()">
+                                </th>
+                                <th style="width: 50px"></th>
+                                <th>姓名</th>
+                                <th>联系方式</th>
+                                <th>邮箱</th>
+                                <th>地址</th>
+                                <th>社交账号</th>
+                                <th>创建时间</th>
+                                <th style="width: 120px">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="contact : ${contacts}" 
+                                th:class="${contact.isFavorite ? 'table-warning' : ''}"
+                                class="animate__animated animate__fadeIn"
+                                th:data-id="${contact.id}">
+                                <td>
+                                    <input type="checkbox" class="form-check-input contact-checkbox" 
+                                           th:value="${contact.id}" onchange="updateBatchDeleteButton()">
+                                </td>
+                                <td>
+                                    <i class="fas fa-star favorite-star" 
+                                       th:classappend="${contact.isFavorite ? 'active' : ''}"
+                                       th:onclick="'toggleFavorite(' + ${contact.id} + ', this)'"></i>
+                                </td>
+                                <td>
+                                    <span th:text="${contact.name}"></span>
+                                    <span th:if="${contact.isFavorite}" class="badge bg-warning text-dark ms-2">
+                                        <i class="fas fa-thumbtack me-1"></i>置顶
+                                    </span>
+                                </td>
+                                <td>
+                                    <div th:each="phone : ${contact.phones}" class="phone-badge">
+                                        <span class="badge bg-primary" th:text="${phone.type}"></span>
+                                        <span th:text="${phone.phone}"></span>
+                                        <small class="text-muted" th:text="${phone.description}"></small>
+                                    </div>
+                                </td>
+                                <td th:text="${contact.email}"></td>
+                                <td th:text="${contact.address}"></td>
+                                <td>
+                                    <div class="social-accounts">
+                                        <div th:if="${contact.wechat}" class="social-account-item" title="微信">
+                                            <i class="fab fa-weixin text-success"></i>
+                                            <small th:text="${contact.wechat}" th:title="${contact.wechat}"></small>
+                                        </div>
+                                        <div th:if="${contact.qq}" class="social-account-item" title="QQ">
+                                            <i class="fab fa-qq text-primary"></i>
+                                            <small th:text="${contact.qq}" th:title="${contact.qq}"></small>
+                                        </div>
+                                        <div th:if="${contact.weibo}" class="social-account-item" title="微博">
+                                            <i class="fab fa-weibo text-danger"></i>
+                                            <small th:text="${contact.weibo}" th:title="${contact.weibo}"></small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td th:text="${#temporals.format(contact.createTime, 'yyyy-MM-dd HH:mm')}"></td>
+                                <td class="action-buttons">
+                                    <button class="btn btn-sm btn-outline-warning me-1" th:onclick="'editContact(' + ${contact.id} + ')'">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" th:onclick="'deleteContact(' + ${contact.id} + ')'">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 添加联系人模态框 -->
+        <div class="modal fade" id="addContactModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">添加联系人</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">姓名</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">邮箱</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">联系方式</label>
+                                <div id="phoneList" class="phone-list">
+                                    <!-- 电话号码列表将通过JavaScript动态添加 -->
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-2" onclick="addPhoneField()">
+                                    <i class="fas fa-plus me-1"></i>添加联系方式
+                                </button>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">地址</label>
+                                <input type="text" class="form-control" name="address">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">微信号</label>
+                                    <input type="text" class="form-control" name="wechat">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">QQ号</label>
+                                    <input type="text" class="form-control" name="qq">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">微博账号</label>
+                                    <input type="text" class="form-control" name="weibo">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="saveContact()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 编辑联系人模态框 -->
+        <div class="modal fade" id="editContactModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">编辑联系人</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editContactForm">
+                            <input type="hidden" name="id">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">姓名</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">邮箱</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">联系方式</label>
+                                <div id="editPhoneList" class="phone-list">
+                                    <!-- 电话号码列表将通过JavaScript动态添加 -->
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-2" onclick="addEditPhoneField()">
+                                    <i class="fas fa-plus me-1"></i>添加联系方式
+                                </button>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">地址</label>
+                                <input type="text" class="form-control" name="address">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">微信号</label>
+                                    <input type="text" class="form-control" name="wechat">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">QQ号</label>
+                                    <input type="text" class="form-control" name="qq">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">微博账号</label>
+                                    <input type="text" class="form-control" name="weibo">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="updateContact()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 在 body 中添加文件上传的隐藏input -->
+        <input type="file" id="importFile" style="display: none" accept=".xlsx,.xls" onchange="handleImport(this)">
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#contactTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Chinese.json'
+                },
+                ordering: false,  // 禁用前端排序
+                searching: false, // 禁用搜索
+                info: false      // 禁用页面信息显示
+            });
+        });
+
+        // 修改导出函数
+        function exportContacts() {
+            window.location.href = '/contact/export';
+        }
+
+        // 修改导入函数
+        function importContacts() {
+            document.getElementById('importFile').click();
+        }
+
+        function handleImport(input) {
+            if (input.files && input.files[0]) {
+                const formData = new FormData();
+                formData.append('file', input.files[0]);
+                
+                $.ajax({
+                    url: '/contact/import',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response === 'success') {
+                            alert('导入成功');
+                            location.href = '/contact/list';
+                        } else {
+                            alert('导入失败');
+                        }
+                    },
+                    error: function() {
+                        alert('导入失败');
+                    }
+                });
+            }
+            // 清除文件选择，允许重复选择同一个文件
+            input.value = '';
+        }
+
+        let phoneCounter = 0;
+
+        function addPhoneField() {
+            const phoneList = document.getElementById('phoneList');
+            const phoneItem = document.createElement('div');
+            phoneItem.className = 'phone-item mb-2 animate__animated animate__fadeIn';
+            phoneItem.innerHTML = `
+                <div class="row">
+                    <div class="col-md-4">
+                        <select class="form-select" name="phones[${phoneCounter}].type" required>
+
+                            <option value="HOME">家庭</option>
+                            <option value="WORK">工作</option>
+                            <option value="OTHER">其他</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="tel" class="form-control" name="phones[${phoneCounter}].phone" 
+                               placeholder="电话号码" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="phones[${phoneCounter}].description" 
+                               placeholder="描述">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-outline-danger btn-sm" 
+                                onclick="this.parentElement.parentElement.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            phoneList.appendChild(phoneItem);
+            phoneCounter++;
+        }
+
+        function saveContact() {
+            const formData = new FormData(document.getElementById('contactForm'));
+            const data = {};
+            data.phones = [];
+            
+            formData.forEach((value, key) => {
+                if (key.startsWith('phones[')) {
+                    const match = key.match(/phones\[(\d+)\]\.(\w+)/);
+                    if (match) {
+                        const index = parseInt(match[1]);
+                        const field = match[2];
+                        if (!data.phones[index]) {
+                            data.phones[index] = {};
+                        }
+                        data.phones[index][field] = value;
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+            
+            data.phones = data.phones.filter(phone => phone != null);
+            
+            $.ajax({
+                url: '/contact',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function() {
+                    $('#addContactModal').modal('hide');
+                    location.href = '/contact/list';
+                }
+            });
+        }
+
+        function toggleFavorite(id, element) {
+            $(element).addClass('animate__animated animate__rubberBand');
+            
+            $.ajax({
+                url: '/contact/' + id + '/favorite',
+                type: 'POST',
+                success: function() {
+                    // 直接刷新页面以确保排序正确
+                    location.href = '/contact/list';
+                }
+            });
+        }
+
+        function deleteContact(id) {
+            if (confirm('确定要删除这个联系人吗？')) {
+                const card = $(`[data-id="${id}"]`).closest('.col-md-6');
+                card.addClass('animate__animated animate__fadeOutRight');
+                
+                setTimeout(() => {
+                    $.ajax({
+                        url: '/contact/' + id,
+                        type: 'DELETE',
+                        success: function() {
+                            location.href = '/contact/list';
+                        }
+                    });
+                }, 500);
+            }
+        }
+
+        // 清除表单
+        $('#addContactModal').on('hidden.bs.modal', function () {
+            document.getElementById('contactForm').reset();
+            document.getElementById('phoneList').innerHTML = '';
+            phoneCounter = 0;
+        });
+
+        // 页面加载时添加一个默认的电话输入框
+        document.addEventListener('DOMContentLoaded', function() {
+            addPhoneField();
+        });
+
+        let editPhoneCounter = 0;
+        
+        function editContact(id) {
+            // 清空表单
+            document.getElementById('editContactForm').reset();
+            document.getElementById('editPhoneList').innerHTML = '';
+            editPhoneCounter = 0;
+            
+            // 获取联系人数据
+            $.ajax({
+                url: '/contact/' + id,
+                type: 'GET',
+                success: function(contact) {
+                    // 填充基本信息
+                    const form = document.getElementById('editContactForm');
+                    form.id.value = contact.id;
+                    form.name.value = contact.name;
+                    form.email.value = contact.email || '';
+                    form.address.value = contact.address || '';
+                    form.wechat.value = contact.wechat || '';
+                    form.qq.value = contact.qq || '';
+                    form.weibo.value = contact.weibo || '';
+                    
+                    // 填充电话信息
+                    if (contact.phones && contact.phones.length > 0) {
+                        contact.phones.forEach(phone => {
+                            addEditPhoneField(phone);
+                        });
+                    } else {
+                        addEditPhoneField();
+                    }
+                    
+                    // 显示模态框
+                    $('#editContactModal').modal('show');
+                }
+            });
+        }
+        
+        function addEditPhoneField(phone = null) {
+            const phoneList = document.getElementById('editPhoneList');
+            const phoneItem = document.createElement('div');
+            phoneItem.className = 'phone-item mb-2 animate__animated animate__fadeIn';
+            phoneItem.innerHTML = `
+                <div class="row">
+                    <div class="col-md-4">
+                        <select class="form-select" name="phones[${editPhoneCounter}].type" required>
+
+                            <option value="HOME" ${phone && phone.type === 'HOME' ? 'selected' : ''}>家庭</option>
+                            <option value="WORK" ${phone && phone.type === 'WORK' ? 'selected' : ''}>工作</option>
+                            <option value="OTHER" ${phone && phone.type === 'OTHER' ? 'selected' : ''}>其他</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="tel" class="form-control" name="phones[${editPhoneCounter}].phone" 
+                               placeholder="电话号码" required value="${phone ? phone.phone : ''}">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="phones[${editPhoneCounter}].description" 
+                               placeholder="描述" value="${phone ? phone.description || '' : ''}">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-outline-danger btn-sm" 
+                                onclick="this.parentElement.parentElement.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            phoneList.appendChild(phoneItem);
+            editPhoneCounter++;
+        }
+        
+        function updateContact() {
+            const formData = new FormData(document.getElementById('editContactForm'));
+            const data = {};
+            data.phones = [];
+            
+            formData.forEach((value, key) => {
+                if (key.startsWith('phones[')) {
+                    const match = key.match(/phones\[(\d+)\]\.(\w+)/);
+                    if (match) {
+                        const index = parseInt(match[1]);
+                        const field = match[2];
+                        if (!data.phones[index]) {
+                            data.phones[index] = {};
+                        }
+                        data.phones[index][field] = value;
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+            
+            // 过滤掉空的电话记录
+            data.phones = data.phones.filter(phone => phone != null && phone.phone && phone.phone.trim() !== '');
+            
+            const id = data.id;  // 获取ID
+            delete data.id;      // 从数据中移除ID，因为它会在URL中传递
+            
+            $.ajax({
+                url: '/contact/' + id + '/update',  // 修改URL路径
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function() {
+                    $('#editContactModal').modal('hide');
+                    location.href = '/contact/list';
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    alert('保存失败，请重试');
+                }
+            });
+        }
+
+        // 搜索功能
+        function searchContacts() {
+            const keyword = document.getElementById('searchInput').value.trim();
+            if (keyword) {
+                $.ajax({
+                    url: '/contact/search?keyword=' + encodeURIComponent(keyword),
+                    type: 'GET',
+                    success: function(contacts) {
+                        updateContactTable(contacts);
+                    }
+                });
+            } else {
+                location.href = '/contact/list';
+            }
+        }
+
+        // 更新表格内容
+        function updateContactTable(contacts) {
+            const tbody = $('#contactTable tbody');
+            tbody.empty();
+            
+            contacts.forEach(contact => {
+                const tr = $('<tr>')
+                    .addClass(contact.isFavorite ? 'table-warning' : '')
+                    .addClass('animate__animated animate__fadeIn')
+                    .attr('data-id', contact.id);
+                    
+                // 添加复选框列
+                tr.append(`
+                    <td>
+                        <input type="checkbox" class="form-check-input contact-checkbox" 
+                               value="${contact.id}" onchange="updateBatchDeleteButton()">
+                    </td>
+                `);
+                    
+                // 添加收藏星标列
+                tr.append(`
+                    <td>
+                        <i class="fas fa-star favorite-star ${contact.isFavorite ? 'active' : ''}" 
+                           onclick="toggleFavorite(${contact.id}, this)"></i>
+                    </td>
+                `);
+                    
+                // 添加姓名列
+                tr.append(`
+                    <td>
+                        <span>${contact.name}</span>
+                        ${contact.isFavorite ? '<span class="badge bg-warning text-dark ms-2"><i class="fas fa-thumbtack me-1"></i>置顶</span>' : ''}
+                    </td>
+                `);
+                    
+                // 添加联系方式列
+                let phonesHtml = '';
+                if (contact.phones && contact.phones.length > 0) {
+                    contact.phones.forEach(phone => {
+                        phonesHtml += `
+                            <div class="phone-badge">
+                                <span class="badge bg-primary">${phone.type}</span>
+                                <span>${phone.phone}</span>
+                                <small class="text-muted">${phone.description || ''}</small>
+                            </div>
+                        `;
+                    });
+                }
+                tr.append(`<td>${phonesHtml}</td>`);
+                    
+                // 添加邮箱列
+                tr.append(`<td>${contact.email || ''}</td>`);
+                    
+                // 添加地址列
+                tr.append(`<td>${contact.address || ''}</td>`);
+                    
+                // 添加社交账号列
+                tr.append(`
+                    <td>
+                        <div class="social-accounts">
+                            <div th:if="${contact.wechat}" class="social-account-item" title="微信">
+                                <i class="fab fa-weixin text-success"></i>
+                                <small th:text="${contact.wechat}" th:title="${contact.wechat}"></small>
+                            </div>
+                            <div th:if="${contact.qq}" class="social-account-item" title="QQ">
+                                <i class="fab fa-qq text-primary"></i>
+                                <small th:text="${contact.qq}" th:title="${contact.qq}"></small>
+                            </div>
+                            <div th:if="${contact.weibo}" class="social-account-item" title="微博">
+                                <i class="fab fa-weibo text-danger"></i>
+                                <small th:text="${contact.weibo}" th:title="${contact.weibo}"></small>
+                            </div>
+                        </div>
+                    </td>
+                `);
+                    
+                // 添加创建时间列
+                const createTime = new Date(contact.createTime).toLocaleString('zh-CN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                tr.append(`<td>${createTime}</td>`);
+                    
+                // 添加操作按钮列
+                tr.append(`
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-outline-warning me-1" onclick="editContact(${contact.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteContact(${contact.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `);
+                    
+                tbody.append(tr);
+            });
+        }
+
+        // 全选/取消全选
+        function toggleSelectAll() {
+            const checked = $('#selectAll').prop('checked');
+            $('.contact-checkbox').prop('checked', checked);
+            updateBatchDeleteButton();
+        }
+
+        // 更新批量删除按钮显示状态
+        function updateBatchDeleteButton() {
+            const selectedCount = $('.contact-checkbox:checked').length;
+            $('#batchDeleteBtn').toggle(selectedCount > 0);
+        }
+
+        // 批量删除
+        function batchDelete() {
+            const selectedIds = $('.contact-checkbox:checked').map(function() {
+                return $(this).val();
+            }).get();
+            
+            if (selectedIds.length === 0) return;
+            
+            if (confirm(`确定要删除选中的 ${selectedIds.length} 个联系人吗？`)) {
+                $.ajax({
+                    url: '/contact/batch',
+                    type: 'DELETE',
+                    contentType: 'application/json',
+                    data: JSON.stringify(selectedIds),
+                    success: function() {
+                        location.href = '/contact/list';
+                    }
+                });
+            }
+        }
+
+        // 添加回车搜索功能
+        $('#searchInput').on('keypress', function(e) {
+            if (e.which === 13) {
+                searchContacts();
+            }
+        });
+    </script>
+</body>
+</html> 
